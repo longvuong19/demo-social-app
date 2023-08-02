@@ -38,8 +38,8 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
 
   return (
     <FlexBetween>
-      <FlexBetween gap="1rem">
-        <UserImage image={userPicturePath} size="55px" />
+      <FlexBetween gap="16px">
+        <UserImage image={userPicturePath} size="56px" />
         <Box
           onClick={() => {
             navigate(`/profile/${friendId}`);
@@ -48,25 +48,26 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
         >
           <Typography
             color={main}
-            variant="h5"
+            variant="h4"
             fontWeight="500"
+            marginBottom="4px"
             sx={{
               "&:hover": {
-                color: palette.primary.light,
+                color: palette.primary.dark,
                 cursor: "pointer",
               },
             }}
           >
             {name}
           </Typography>
-          <Typography color={medium} fontSize="0.75rem">
+          <Typography color={medium} fontSize="14px">
             {subtitle}
           </Typography>
         </Box>
       </FlexBetween>
       <IconButton
         onClick={() => patchFriend()}
-        sx={{ backgroundColor: primaryLight, p: "0.6rem" }}
+        sx={{ backgroundColor: primaryLight, padding: "12px" }}
       >
         {isFriend ? (
           <PersonRemoveOutlined sx={{ color: primaryDark }} />
