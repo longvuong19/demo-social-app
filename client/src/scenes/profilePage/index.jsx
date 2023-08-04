@@ -12,7 +12,7 @@ const ProfilePage = () => {
   const [user, setUser] = useState(null);
   const { userId } = useParams();
   const token = useSelector((state) => state.token);
-  const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
+  const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
 
   const getUser = async () => {
     const response = await fetch(`http://localhost:3001/users/${userId}`, {
@@ -25,7 +25,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     getUser();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!user) return null;
 
@@ -39,14 +39,13 @@ const ProfilePage = () => {
         gap="32px"
         justifyContent="center"
       >
-        <Box flexBasis={isNonMobileScreens ? "24%" : undefined}>
+        <Box flexBasis={isNonMobileScreens ? "26%" : undefined}>
           <UserWidget userId={userId} picturePath={user.picturePath} />
           <Box margin="32px 0" />
           <FriendListWidget userId={userId} />
-          {console.log(userId)}
         </Box>
         <Box
-          flexBasis={isNonMobileScreens ? "44%" : undefined}
+          flexBasis={isNonMobileScreens ? "42%" : undefined}
           marginTop={isNonMobileScreens ? undefined : "32px"}
         >
           <MyPostWidget picturePath={user.picturePath} />
